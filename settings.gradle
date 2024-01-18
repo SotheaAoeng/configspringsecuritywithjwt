@@ -1,0 +1,3 @@
+rootProject.name = 'spring-boot-3-security'
+include ':rest-api'
+include ':rest-commons'

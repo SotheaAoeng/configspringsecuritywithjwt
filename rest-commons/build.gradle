@@ -1,0 +1,32 @@
+plugins {
+	id 'java'
+}
+
+bootWar {
+	enabled = false
+}
+
+bootJar {
+	enabled = false
+}
+
+jar {
+	enabled = true
+}
+
+group = 'com.merean'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// do not include dependencies here
+	testImplementation platform('org.junit:junit-bom:5.9.1')
+	testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
