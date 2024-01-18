@@ -1,6 +1,7 @@
 package com.merean.spring.boot3.security.controller.auth;
 
 import com.merean.spring.boot3.security.payload.auth.AuthRequest;
+import com.merean.spring.boot3.security.payload.auth.SignUpRequest;
 import com.merean.spring.boot3.security.service.auth.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     private final AuthService authService;
+
+    @PostMapping("/signup")
+    public Object signup(@RequestBody @Valid SignUpRequest payload) throws Throwable {
+        authService.signup(payload);
+        return "SignUp Successful";
+    }
 
     @PostMapping("/login")
     public Object login(@RequestBody @Valid AuthRequest payload) throws Throwable {
