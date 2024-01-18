@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "/api/v1/user")
+@RequestMapping(value = "/api/v1/auth")
 public class AuthController {
 
     private final AuthService authService;
 
     @PostMapping("/login")
-    public Object createUser(@RequestBody @Valid AuthRequest payload) throws Throwable {
+    public Object login(@RequestBody @Valid AuthRequest payload) throws Throwable {
         return authService.login(payload);
     }
 }
