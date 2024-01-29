@@ -36,8 +36,8 @@ public class User {
     @Column(name = "phone_number", length = 20, nullable = false)
     private String phoneNumber;
 
-    @Column(name = "user_roles", length = 50)
-    private String userRoles;
+    @Column(name = "user_role", length = 10)
+    private String userRole;
 
     @Column(name = "user_image", length = 500)
     private String userImage;
@@ -46,8 +46,16 @@ public class User {
     @Convert(converter = YesOrNo.Converter.class)
     private YesOrNo deleteYN;
 
+    @Column(name = "active_yn", length = 1)
+    @Convert(converter = YesOrNo.Converter.class)
+    private YesOrNo activeYN;
+
+    @Column(name = "lock_yn", length = 1)
+    @Convert(converter = YesOrNo.Converter.class)
+    private YesOrNo lockYN;
+
     @Builder
-    public User(Long id, String userId, String userName, String userPassword, String userEmail, String userAddress, String phoneNumber, String userRoles, String userImage, YesOrNo deleteYN) {
+    public User(Long id, String userId, String userName, String userPassword, String userEmail, String userAddress, String phoneNumber, String userRole, String userImage, YesOrNo deleteYN, YesOrNo activeYN, YesOrNo lockYN) {
         this.id = id;
         this.userId = userId;
         this.userName = userName;
@@ -55,8 +63,10 @@ public class User {
         this.userEmail = userEmail;
         this.userAddress = userAddress;
         this.phoneNumber = phoneNumber;
-        this.userRoles = userRoles;
+        this.userRole = userRole;
         this.userImage = userImage;
         this.deleteYN = deleteYN;
+        this.activeYN = activeYN;
+        this.lockYN = lockYN;
     }
 }
